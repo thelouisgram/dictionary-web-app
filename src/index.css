@@ -6,8 +6,8 @@
 @tailwind components;
 @tailwind utilities;
 
-div:focus{
-  outline: none;
+:root{
+  -webkit-tap-highlight-color: transparent;
 }
 
 .switch {
