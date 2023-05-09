@@ -7,7 +7,7 @@
 @tailwind utilities;
 
 div{
-  outline: transparent;
+  outline: none;
 }
 
 .switch {

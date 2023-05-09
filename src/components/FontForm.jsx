@@ -36,10 +36,10 @@ const FontForm = () => {
     <div
       title="Select Font Dropdown"
       onClick={handleDropDown}
-      className="w-auto flex justify-end items-center  relative cursor-pointer"
+      className="w-auto flex justify-end items-center  relative cursor-pointer outline-none"
     >
       <div
-        className={`font-[700] text-[14px] xs:text-[16px] sm:text-[18px] mr-2 xs:mr-3 sm:mr-5
+        className={`font-[700] text-[14px] xs:text-[16px] sm:text-[18px] outline-none mr-2 xs:mr-3 sm:mr-5
             ${mode.textMain}`}
       >
         {fontFamily.name}
