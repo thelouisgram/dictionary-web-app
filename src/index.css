@@ -6,6 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
+div{
+  outline: transparent;
+}
+
 .switch {
   position: relative;
   display: inline-block;
