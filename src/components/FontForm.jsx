@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, easeInOut } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import theme from "../style";
 import { useState, useEffect } from "react";
 import { setFont, toggleDropDown } from "../store/stateSlice";
@@ -23,12 +23,14 @@ const FontForm = () => {
   });
   // Toggle Drop Down Function
   const handleDropDown = () => {
-    dispatch(toggleDropDown());
+    dispatch(toggleDropDown(dropDown ? false : true));
   };
+
   // Re-render on change of font and update global font state
   useEffect(() => {
     dispatch(setFont(fontFamily));
   }, [dispatch, fontFamily]);
+
 
   return (
     <div
@@ -50,17 +52,16 @@ const FontForm = () => {
       <AnimatePresence>
         {dropDown && (
           <motion.div
-            key="font-options"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 20 }}
-            exit={{ opacity: 0, y: 40 }}
-            transition={{ ease: easeInOut, duration: 0.5 }}
+            initial={{ opacity: 0, x: 50}}
+            animate={{ opacity: 1, x: 20}}
+            exit={{ opacity: 0, x: 50}}
+            transition={{ ease: "easeInOut", duration: 0.5 }}
           >
             <div
               className={`${
                 darkMode ? "dark-shadow" : "light-shadow"
               } absolute w-[150px] p-5 gap-3 h-auto rounded-[5px] flex flex-col justify-center
-                  items-start right-[-10px] xs:right-0`}
+                  items-start top-5 right-[-10px] xs:right-0`}
             >
               {/* Mapping through the font array, displaying all font options */}
               {fontArray.map((item, index) => {

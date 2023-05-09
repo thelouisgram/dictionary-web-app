@@ -33,8 +33,8 @@ const stateSlice = createSlice({
         setFont: (state, action) => {
             state.font = action.payload
         },
-        toggleDropDown: (state) => {
-            state.dropDown = !state.dropDown
+        toggleDropDown: (state, action) => {
+            state.dropDown = action.payload
         },
         setSearchWord: (state, action) => {
             state.searchWord = action.payload
