@@ -5,7 +5,9 @@ const Word = () => {
   // Destructured global state
   const { darkMode, wordData } = useSelector((state) => state.app);
   //  Theme ternary
-  const mode = darkMode ? theme.dark : theme.light; const word = wordData[0];
+  const mode = darkMode ? theme.dark : theme.light; 
+  // Selecting interested Object from API response Array
+  const word = wordData[0];
 
   return (
     // Returning Word

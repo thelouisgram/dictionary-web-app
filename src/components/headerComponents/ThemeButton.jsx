@@ -1,4 +1,4 @@
-import { toggleTheme, setFavTheme } from "../store/stateSlice";
+import { toggleTheme, setFavTheme } from "../../store/stateSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 

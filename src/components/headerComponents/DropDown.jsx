@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
-import theme from "../style";
 import { useState, useEffect } from "react";
-import { setFont, toggleDropDown } from "../store/stateSlice";
+import theme from "../../style";
+import { setFont } from "../../store/stateSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const FontForm = () => {
+const DropDown = () => {
   const dispatch = useDispatch();
   // Destructured global state
   const { darkMode, dropDown } = useSelector((state) => state.app);
@@ -21,47 +21,26 @@ const FontForm = () => {
     name: "Sans Serif",
     type: "font-SansSerif",
   });
-  // Toggle Drop Down Function
-  const handleDropDown = () => {
-    dispatch(toggleDropDown(dropDown ? false : true));
-  };
-
   // Re-render on change of font and update global font state
   useEffect(() => {
     dispatch(setFont(fontFamily));
   }, [dispatch, fontFamily]);
 
-
   return (
-    <div
-      title="Select Font Dropdown"
-      onClick={handleDropDown}
-      className="w-auto flex justify-end items-center  relative cursor-pointer outline-none"
-    >
-      <div
-        className={`font-[700] text-[14px] xs:text-[16px] sm:text-[18px] outline-none mr-2 xs:mr-3 sm:mr-5
-            ${mode.textMain}`}
-      >
-        {fontFamily.name}
-      </div>
-      {/* Expand more button */}
-      <span className="material-symbols-outlined text-[16px] xs:text-[20px] text-purple">
-        expand_more
-      </span>
-      {/* Font Selection Dropdown Conditional render*/}
+    <div>
       <AnimatePresence>
         {dropDown && (
           <motion.div
-            initial={{ opacity: 0, x: 50}}
-            animate={{ opacity: 1, x: 20}}
-            exit={{ opacity: 0, x: 50}}
-            transition={{ ease: "easeInOut", duration: 0.5 }}
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 5 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ ease: "easeInOut", duration: 0.2 }}
           >
             <div
               className={`${
                 darkMode ? "dark-shadow" : "light-shadow"
-              } absolute w-[150px] p-5 gap-3 h-auto rounded-[5px] flex flex-col justify-center
-                  items-start top-5 right-[-10px] xs:right-0`}
+              } absolute w-[110px] xs:w-[150px] p-4 xs:p-5 gap-3 h-auto flex flex-col justify-center
+                  items-start`}
             >
               {/* Mapping through the font array, displaying all font options */}
               {fontArray.map((item, index) => {
@@ -86,4 +65,4 @@ const FontForm = () => {
   );
 };
 
-export default FontForm;
+export default DropDown;

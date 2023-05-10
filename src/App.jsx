@@ -8,10 +8,10 @@ import Header from "./components/Header";
 
 const App = () => {
   // Destructured global state
-  const { darkMode, font, searchWord } = useSelector((state) => state.app);
+  const { darkMode, font, searchWord, wordData } = useSelector((state) => state.app);
   //  Theme ternary
   const mode = darkMode ? theme.dark : theme.light; const dispatch = useDispatch();
-
+   
   // Calling the API & re-rendering only when theres a change in searchWord
   useEffect(() => {
     if (searchWord) {
