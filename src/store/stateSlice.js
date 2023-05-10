@@ -6,7 +6,7 @@ const stateSlice = createSlice({
     // Global state
     initialState: {
         // Theme state
-        darkMode: false,
+        darkMode: true,
         // Font state
         font: {},
         // Dropdown state
