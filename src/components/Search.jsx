@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { setSearchWord, reset } from "../store/stateSlice";
 import Input from "./searchComponents/Input";
 import SubmitButton from "./searchComponents/SubmitButton";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Search = () => {
   // Destructured global state
@@ -20,17 +21,17 @@ const Search = () => {
     setIsFocused(true);
   };
 
-  useEffect(()=> {
-  if(formWord.length > 0){
-    setIsForm(true)
-  }
-  }, [formWord])
+  useEffect(() => {
+    if (formWord.length > 0) {
+      setIsForm(true);
+    }
+  }, [formWord]);
 
   // Form Blur function
   const handleBlur = () => {
     if (!formWord) {
       setIsFocused(true);
-    } else{
+    } else {
       setIsFocused(false);
     }
   };
@@ -49,24 +50,32 @@ const Search = () => {
   return (
     <div className="mb-6 sm:mb-10 flex flex-col gap-3">
       {/* Form */}
-      <form
-        // Submit eventListener
-        onSubmit={submitForm}
-        // Form focus eventListener
-        onFocus={handleFocus}
-        // Form blur eventListener
-        onBlur={handleBlur}
-        className={`w-full  px-4 xs:px-6 rounded-[10px] sm:rounded-[15px] ${
-          mode.input
-        } border-[1px] transition
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ ease: "easeInOut", duration: 2.4 }}
+        >
+          <form
+            // Submit eventListener
+            onSubmit={submitForm}
+            // Form focus eventListener
+            onFocus={handleFocus}
+            // Form blur eventListener
+            onBlur={handleBlur}
+            className={`w-full  px-4 xs:px-6 rounded-[10px] sm:rounded-[15px] ${
+              mode.input
+            } border-[1px] transition
         flex justify-between items-center ${!isForm && "border-strawBerry"} 
         ${isFocused ? "border-purple " : "border-transparent"}`}
-      >
-        {/* Input */}
-        <Input />
-        {/* Submit button */}
-        <SubmitButton />
-      </form>
+          >
+            {/* Input */}
+            <Input />
+            {/* Submit button */}
+            <SubmitButton />
+          </form>
+        </motion.div>
+      </AnimatePresence>
       {/* Display error if form is submitted when empty */}
       {!isForm && (
         <p className="text-strawBerry text-[12px] xs:text-[16px] sm:text-[20px]">
