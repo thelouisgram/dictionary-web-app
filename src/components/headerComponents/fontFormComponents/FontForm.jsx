@@ -27,7 +27,7 @@ const FontForm = () => {
         {font.name}
       </div>
       {/* Expand more button */}
-      <img src={expandMore} alt='expand more' className={`transition ${dropDown ? "rotate-180" : "rotate-0"}`}/>
+      <img src={expandMore} alt='expand more' className={`transition ${dropDown ? "rotate-180" : "rotate-0"} w-[24px] sm:w-[30px]`}/>
       {/* Font Selection Dropdown Conditional render*/}
     </div>
   );
