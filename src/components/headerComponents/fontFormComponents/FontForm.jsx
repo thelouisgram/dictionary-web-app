@@ -1,6 +1,7 @@
 import theme from "../../../style";
 import { toggleDropDown } from "../../../store/stateSlice";
 import { useDispatch, useSelector } from "react-redux";
+import expandMore from '../../../assets/expand_more.png'
 
 const FontForm = () => {
   const dispatch = useDispatch();
@@ -26,12 +27,7 @@ const FontForm = () => {
         {font.name}
       </div>
       {/* Expand more button */}
-      <span
-        className={`material-symbols-outlined text-[18px] xs:text-[20px] text-purple transition
-      ${dropDown ? "rotate-180" : "rotate-0"}`}
-      >
-        expand_more
-      </span>
+      <img src={expandMore} alt='expand more' className={`transition ${dropDown ? "rotate-180" : "rotate-0"}`}/>
       {/* Font Selection Dropdown Conditional render*/}
     </div>
   );
