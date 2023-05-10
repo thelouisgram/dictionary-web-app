@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import useAudioPlayer from "./useAudioPlayer";
+import useAudioPlayer from "./audioComponents/useAudioPlayer";
 
 const AudioButton = () => {
   // Destructured global state
@@ -32,11 +32,11 @@ const AudioButton = () => {
         <button
           title="Play Audio Button"
           onClick={playAudio}
-          className={`flex items-center p-[12px] flex-shrink-0 sm:p-4 rounded-full bg-purpleBg text-purple transition hover:bg-purple hover:text-white`}
+          className={`flex items-center p-[15px] flex-shrink-0 sm:p-4 rounded-full bg-purpleBg text-purple transition hover:bg-purple hover:text-white`}
         >
           {/* ternary to render audio icon based on isPlaying */}
           {isPlaying ? (
-            <span className="material-symbols-outlined transition text-[20px] sm:text-[40px] ">
+            <span className="material-symbols-outlined transition text-[24px] sm:text-[40px] ">
               volume_up
             </span>
           ) : (

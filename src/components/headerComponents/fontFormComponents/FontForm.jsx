@@ -1,5 +1,5 @@
-import theme from "../../style";
-import { toggleDropDown } from "../../store/stateSlice";
+import theme from "../../../style";
+import { toggleDropDown } from "../../../store/stateSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const FontForm = () => {
@@ -14,20 +14,20 @@ const FontForm = () => {
   };
 
   return (
-    <div 
+    <div
       title="Select Font Dropdown"
       onClick={handleDropDown}
       className={`w-auto flex justify-end items-center cursor-pointer `}
     >
       <div
-        className={`font-[700] text-[14px] xs:text-[16px] sm:text-[18px] xs:mr-3 sm:mr-5
+        className={`font-[700] text-[14px] xs:text-[16px] sm:text-[18px] mr-2 xs:mr-3 sm:mr-5
             ${mode.textMain}`}
       >
         {font.name}
       </div>
       {/* Expand more button */}
       <span
-        className={`material-symbols-outlined text-[16px] xs:text-[20px] text-purple transition
+        className={`material-symbols-outlined text-[18px] xs:text-[20px] text-purple transition
       ${dropDown ? "rotate-180" : "rotate-0"}`}
       >
         expand_more

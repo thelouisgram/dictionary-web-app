@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import theme from "../style";
-import { setFormWord } from "../store/stateSlice";
+import theme from "../../style";
+import { setFormWord } from "../../store/stateSlice";
 
 const Error = () => {
   // Destructured global state
@@ -30,9 +30,11 @@ const Error = () => {
           )}
           {message && <h3>{message}</h3>}
           {resolution && <h3>{resolution}</h3>}
+          {!message && <h3 className="capitalize">{messages}</h3>}
         </div>
       )}
       {/* Clear search bar button */}
+      {message &&
       <div
         title='Clear search bar'
         onClick={() => {
@@ -42,7 +44,7 @@ const Error = () => {
         px-4 py-2  xs:px-6 xs:py-3 cursor-pointer`}
       >
         Clear Search
-      </div>
+      </div>}
     </div>
   );
 };

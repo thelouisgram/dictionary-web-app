@@ -4,8 +4,8 @@ import Word from "./contentComponents/Word";
 import AudioButton from "./contentComponents/AudioButton";
 import Meanings from "./contentComponents/Meanings";
 import Source from "./contentComponents/Source";
-import Error from "./Error";
-import Loading from './Loading'
+import Error from "./contentComponents/Error";
+import Loading from './contentComponents/Loading'
 
 const Content = () => {
   // Destructured global state
