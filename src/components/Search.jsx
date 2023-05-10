@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import theme from "../style";
-import searchIcon from "../assets/search.svg";
-import { useState } from "react";
-import { setSearchWord, setFormWord, reset } from "../store/stateSlice";
+import { useState, useEffect } from "react";
+import { setSearchWord, reset } from "../store/stateSlice";
+import Input from "./searchComponents/Input";
+import SubmitButton from "./searchComponents/SubmitButton";
 
 const Search = () => {
   // Destructured global state
@@ -18,6 +19,13 @@ const Search = () => {
   const handleFocus = () => {
     setIsFocused(true);
   };
+
+  useEffect(()=> {
+  if(formWord.length > 0){
+    setIsForm(true)
+  }
+  }, [formWord])
+
   // Form Blur function
   const handleBlur = () => {
     if (!formWord) {
@@ -25,11 +33,6 @@ const Search = () => {
     } else{
       setIsFocused(false);
     }
-  };
-  // Function handling change of input and setting it to the global state "formWord"
-  const handleInputChange = (e) => {
-    dispatch(setFormWord(e.target.value));
-    setIsForm(true);
   };
   // Submit Form Function, and setting formWord to searchWord
   const submitForm = (e) => {
@@ -60,22 +63,9 @@ const Search = () => {
         ${isFocused ? "border-purple " : "border-transparent"}`}
       >
         {/* Input */}
-        <input
-          className={`outline-none bg-transparent py-3 xs:py-4 w-full font-bold text-[14px] xs:text-[20px] ${mode.textMain}
-             ${mode.inputPlaceholder}`}
-          placeholder="Search for any word..."
-          // setting form value to global state "formWord"
-          value={formWord}
-          onChange={handleInputChange}
-          type="text"
-        />
+        <Input />
         {/* Submit button */}
-        <button
-          title="Submit Search Word"
-          className="flex items-center outline:none"
-        >
-          <img src={searchIcon} alt="search icon" />
-        </button>
+        <SubmitButton />
       </form>
       {/* Display error if form is submitted when empty */}
       {!isForm && (

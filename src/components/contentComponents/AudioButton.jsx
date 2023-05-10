@@ -42,7 +42,7 @@ const AudioButton = () => {
           ) : (
             <span
               className="material-symbols-outlined
-               transition text-[20px] sm:text-[40px] "
+               transition text-[24px] sm:text-[40px] "
             >
               play_arrow
             </span>

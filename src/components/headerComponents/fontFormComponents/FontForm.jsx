@@ -20,7 +20,7 @@ const FontForm = () => {
       className={`w-auto flex justify-end items-center cursor-pointer `}
     >
       <div
-        className={`font-[700] text-[14px] xs:text-[16px] sm:text-[18px] mr-2 xs:mr-3 sm:mr-5
+        className={`font-[700] text-[14px] xs:text-[16px] sm:text-[18px] mr-2 xs:mr-3 sm:mr-4
             ${mode.textMain}`}
       >
         {font.name}

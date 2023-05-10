@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import theme from "../../../style";
-import { setFont } from "../../../store/stateSlice";
+import { setFont, toggleDropDown } from "../../../store/stateSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const DropDown = () => {
@@ -31,9 +31,9 @@ const DropDown = () => {
       <AnimatePresence>
         {dropDown && (
           <motion.div
-            initial={{ opacity: 0, y: -5 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 5 }}
-            exit={{ opacity: 0, y: -5 }}
+            exit={{ opacity: 0, y: -8 }}
             transition={{ ease: "easeInOut", duration: 0.2 }}
           >
             <div
@@ -48,7 +48,10 @@ const DropDown = () => {
                     className={` ${mode.textMain} w-full ${fontFamily.type === item.type ? "text-purple" : ""
                       } cursor-pointer ${item.type} 
                   hover:text-purple font-[700] text-[14px] xs:text-[18px]`}
-                    onClick={() => setFontFamily(item)}
+                    onClick={() => {
+                      setFontFamily(item), 
+                      dispatch(toggleDropDown(false))}
+                    }
                     key={index}
                   >
                     {item.name}

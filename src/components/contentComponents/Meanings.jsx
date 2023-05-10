@@ -1,17 +1,9 @@
-import { useSelector } from "react-redux";
 import SubMeaning from "./meaningsComponents/SubMeaning";
 import MainMeaning from "./meaningsComponents/MainMeaning";
+import MeaningsFunction from "./meaningsComponents/MeaningsFunction";
 
 const Meanings = () => {
-  // Destructured global state
-  const { wordData } = useSelector((state) => state.app);
-  // Selecting interested Object from API response Array
-  const word = wordData[0];
-  // Mapping through meanings, setting meanings to an array and setting empty meanings to ""
-  const meanings = word.meanings.map((item) => (item.partOfSpeech ? item : ""));
-  // Removing empty meanings from array
-  const newMeanings = meanings.filter((item) => item !== "");
-  // Mapping through meanings
+  const newMeanings = MeaningsFunction()
   const meaning = newMeanings.map((item, index) => {
     // Mapping through each meaning
     const subMeaning = item.definitions.map((item, index) => {
