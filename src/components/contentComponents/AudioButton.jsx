@@ -30,12 +30,14 @@ const AudioButton = () => {
   }
   // Play Audio Function
   const playAudio = () => {
-      setIsLoading(true);
+    setIsLoading(true);
     const audio = new Audio(firstAudio);
-    // Play audio
-    audio.play();
-    // Audio eventListeners
-    audio.addEventListener("playing", handlePlaying);
+    setTimeout(function () {
+      // Play audio
+      audio.play();
+      // Audio eventListeners
+      audio.addEventListener("playing", handlePlaying);
+    }, 2000); 
     audio.addEventListener("pause", () => updatePlayState("isPlaying", false));
   };
 
