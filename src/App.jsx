@@ -8,7 +8,7 @@ import Header from "./components/Header";
 
 const App = () => {
   // Destructured global state
-  const { darkMode, font, searchWord, wordData } = useSelector((state) => state.app);
+  const { darkMode, font, searchWord } = useSelector((state) => state.app);
   //  Theme ternary
   const mode = darkMode ? theme.dark : theme.light; const dispatch = useDispatch();
    
@@ -29,7 +29,7 @@ const App = () => {
   return (
     // Entire page
     <section
-      className={`w-full h-[100vh] transition ${font.type} ${mode.background} outline-none`}
+      className={`w-full h-[100dvh] transition ${font.type} ${mode.background} outline-none`}
     >
       {/* Container to hold automatic height outside the sm:fixed width */}
       <div className={`w-full h-auto transition pb-14 sm:pb-24 ${mode.background}`}>
