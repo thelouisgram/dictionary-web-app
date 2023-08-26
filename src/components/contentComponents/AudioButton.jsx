@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import AudioLoader from "./audioComponents/audioLoader";
+import AudioLoader from "./audioComponents/AudioLoader";
 
 const AudioButton = () => {
   // Destructured global state
