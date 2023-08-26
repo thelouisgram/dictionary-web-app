@@ -212,3 +212,40 @@ input:checked + .slider:before {
     transform: rotate(360deg);
   }
 }
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 32px; /* 80px divided by 2.5 */
+  height: 32px; /* 80px divided by 2.5 */
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 3.2px; /* 8px divided by 2.5 */
+  width: 6.4px; /* 16px divided by 2.5 */
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 3.2px; /* 8px divided by 2.5 */
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 12.8px; /* 32px divided by 2.5 */
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 22.4px; /* 56px divided by 2.5 */
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 3.2px; /* 8px divided by 2.5 */
+    height: 25.6px; /* 64px divided by 2.5 */
+  }
+  50%, 100% {
+    top: 9.6px; /* 24px divided by 2.5 */
+    height: 12.8px; /* 32px divided by 2.5 */
+  }
+}

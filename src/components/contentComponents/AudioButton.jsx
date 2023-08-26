@@ -1,27 +1,42 @@
 import { useSelector } from "react-redux";
-import useAudioPlayer from "./audioComponents/useAudioPlayer";
+import { useState } from "react";
+import AudioLoader from "./audioComponents/audioLoader";
 
 const AudioButton = () => {
   // Destructured global state
   const { wordData } = useSelector((state) => state.app);
   // Selecting interested Object from API response Array
   const word = wordData[0];
-  // Destructured useAudioPlayer()
-  const { isPlaying, handleOnPlaying, handleOnPause } = useAudioPlayer();
   // Mapping and storing all audios into an array and setting empty audio to ""
   const audios = word.phonetics.map((item) => item.audio || "");
   // Filtering through the audios and removing ""
   const filterAudios = audios.filter((item) => item !== "");
   // Selecting the first audio
   const firstAudio = filterAudios.find((item) => item);
+  // Local play state
+  const [play, setPlay] = useState({ isPlaying: false, isLoading: false });
+  // Function to update isPlaying state
+  const updatePlayState = (key, value) => {
+    setPlay((prevState) => ({ ...prevState, [key]: value }));
+  };
+  // Function to update isLoading state
+  const setIsLoading = (value) => {
+    setPlay((prev) => ({ ...prev, isLoading: value }));
+  };
+  // Handle state while playing
+  function handlePlaying() {
+    updatePlayState("isPlaying", true);
+    setIsLoading(false);
+  }
   // Play Audio Function
   const playAudio = () => {
+    setIsLoading(true);
     const audio = new Audio(firstAudio);
     // Play audio
     audio.play();
     // Audio eventListeners
-    audio.addEventListener("playing", handleOnPlaying);
-    audio.addEventListener("pause", handleOnPause);
+    audio.addEventListener("playing", handlePlaying);
+    audio.addEventListener("pause", () => updatePlayState("isPlaying", false));
   };
 
   return (
@@ -30,23 +45,30 @@ const AudioButton = () => {
       {/* Audio Button */}
       {firstAudio ? (
         <button
+          disabled={play.isLoading}
           title="Play Audio Button"
           onClick={playAudio}
-          className={`flex items-center p-[15px] flex-shrink-0 sm:p-4 rounded-full bg-purpleBg text-purple transition hover:bg-purple hover:text-white`}
+          className={`flex w-[54px] h-[54px] sm:w-[72px] sm:h-[72px] justify-center items-center flex-shrink-0 rounded-full bg-purpleBg text-purple transition hover:bg-purple hover:text-white`}
         >
-          {/* ternary to render audio icon based on isPlaying */}
-          {isPlaying ? (
-            <span className="material-symbols-outlined transition text-[24px] sm:text-[40px] ">
-              volume_up
-            </span>
-          ) : (
-            <span
-              className="material-symbols-outlined
-               transition text-[24px] sm:text-[40px] "
-            >
-              play_arrow
-            </span>
-          )}
+          {/* Render audio icon based on isPlaying */}
+          {(() => {
+            switch (true) {
+              case play.isPlaying:
+                return (
+                  <span className="material-symbols-outlined transition text-[24px] sm:text-[40px] ">
+                    volume_up
+                  </span>
+                );
+              case play.isLoading:
+                return <AudioLoader />;
+              default:
+                return (
+                  <span className="material-symbols-outlined transition text-[24px] sm:text-[40px] ">
+                    play_arrow
+                  </span>
+                );
+            }
+          })()}
         </button>
       ) : (
         // !firstAudio and this renders
