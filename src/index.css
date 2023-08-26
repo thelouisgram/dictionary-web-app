@@ -251,7 +251,7 @@ input:checked + .slider:before {
 }
 
 .animate-opacity {
-  animation: opacityAnimation 1s infinite;
+  animation: opacityAnimation 1s;
 }
 
 @keyframes opacityAnimation {
