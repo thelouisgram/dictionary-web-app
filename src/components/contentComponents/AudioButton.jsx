@@ -30,7 +30,7 @@ const AudioButton = () => {
   }
   // Play Audio Function
   const playAudio = () => {
-    setIsLoading(true);
+      setIsLoading(true);
     const audio = new Audio(firstAudio);
     // Play audio
     audio.play();
@@ -55,7 +55,7 @@ const AudioButton = () => {
             switch (true) {
               case play.isPlaying:
                 return (
-                  <span className="material-symbols-outlined transition text-[24px] sm:text-[40px] ">
+                  <span className="material-symbols-outlined transition text-[24px] sm:text-[40px] animate-opacity">
                     volume_up
                   </span>
                 );

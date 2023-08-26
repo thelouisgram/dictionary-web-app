@@ -249,3 +249,17 @@ input:checked + .slider:before {
     height: 12.8px; /* 32px divided by 2.5 */
   }
 }
+
+.animate-opacity {
+  animation: opacityAnimation 1s infinite;
+}
+
+@keyframes opacityAnimation {
+  0%, 100% {
+    opacity: 1; /* Fully opaque */
+  }
+  50% {
+    opacity: 0.5; /* Halfway opaque (50% opacity) */
+  }
+}
+
