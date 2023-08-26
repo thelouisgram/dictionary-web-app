@@ -251,7 +251,7 @@ input:checked + .slider:before {
 }
 
 .animate-opacity {
-  animation: opacityAnimation 1s infinite;
+  animation: opacityAnimation .5s infinite;
 }
 
 @keyframes opacityAnimation {
@@ -259,7 +259,7 @@ input:checked + .slider:before {
     opacity: 1; /* Fully opaque */
   }
   50% {
-    opacity: 0.5; /* Halfway opaque (50% opacity) */
+    opacity: 0; /* Halfway opaque (50% opacity) */
   }
 }
 
